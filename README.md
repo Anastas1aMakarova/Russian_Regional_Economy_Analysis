@@ -2,7 +2,7 @@
 ## Интерактивная статистика и интеллектуальная аналитика сбалансированности  региональной экономики России на основе Больших данных и блокчейн – 2024
 
 <!--Блок информации о репозитории в бейджах-->
-### Githab ![Макарова](https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis)  Githab ![Калинина](https://github.com/Kal1n1na/Russian_Regional_Economy_Analysis)
+### Githab [Макарова](https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis)  Githab [Калинина](https://github.com/Kal1n1na/Russian_Regional_Economy_Analysis)
 
 <!--Установка-->
 ## Установка 
