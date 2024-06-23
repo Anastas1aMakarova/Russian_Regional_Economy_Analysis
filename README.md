@@ -72,7 +72,7 @@
 
 6. Установка в виртуальное окружение библиотеку компонентов начальной загрузки
    
-   ```pip install dash-bootstrap-components```
+```pip install dash-bootstrap-components```
    
 8. Запуск скрипта для демонстрации возможностей 
 
