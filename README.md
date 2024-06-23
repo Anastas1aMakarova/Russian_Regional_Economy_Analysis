@@ -47,7 +47,7 @@
 Код для визуализации данных был написан нами с использованием средств python. Полностью код можно посмотреть на Githab [Макарова](https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis) и Githab [Калинина](https://github.com/Kal1n1na/Russian_Regional_Economy_Analysis)
 
 ## Зависимости
-Эта программа зависит от интепретатора Python версии 3.7 или выше, PIP 23.2.1 или выше. Если вы заметили, что он данное ПО можно запустить на версии ниже, или он не работает на какой-либо версии, то напишите в [поддержку](https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis#поддержка)
+Эта программа зависит от интепретатора Python версии 3.9 или выше, PIP 23.2.1 или выше. Если вы заметили, что он данное ПО можно запустить на версии ниже, или он не работает на какой-либо версии, то напишите в [поддержку](https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis#поддержка)
 
 ## Описание коммитов
 | Название  | Описание                                                        |
