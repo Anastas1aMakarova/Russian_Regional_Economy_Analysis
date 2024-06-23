@@ -47,7 +47,7 @@
 Код для визуализации данных был написан нами с использованием средств python. Полностью код можно посмотреть на Githab [Макарова](https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis) и Githab [Калинина](https://github.com/Kal1n1na/Russian_Regional_Economy_Analysis)
 
 <!--Установка-->
-## Установка 
+## Резвертывание
 У вас должны быть установлен [Репозиторий](https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis)
 
 1. Клонирование репозитория 
