@@ -40,7 +40,7 @@
 
 
 ## Подготовка данных
-Для дальнейшего анализа данные были обработаны и подготовлены. С получившимся датасетом можно ознакомиться [по ссылке] (https://docs.google.com/spreadsheets/d/e/2PACX-1vRWse4Knyb73VWoIywsaDSMAbRmHnJKhYlfPqM7sUOdk9hlJam1kZIRSmIjqJbjZKMg-OfWP37HROJu/pubhtml)
+Для дальнейшего анализа данные были обработаны и подготовлены. С получившимся датасетом можно ознакомиться [по ссылке](https://docs.google.com/spreadsheets/d/e/2PACX-1vRWse4Knyb73VWoIywsaDSMAbRmHnJKhYlfPqM7sUOdk9hlJam1kZIRSmIjqJbjZKMg-OfWP37HROJu/pubhtml)
 
 
 ## Визуализация данных
