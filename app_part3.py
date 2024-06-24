@@ -9,7 +9,7 @@ all_cont = df['Okrug'].unique()
 all_reg = df['Region'].unique()
 all_year = df['Year'].unique()
 
-with open('russia copy.geojson','r',encoding='UTF-8') as response:
+with open('russia_copy.geojson','r',encoding='UTF-8') as response:
         counties = json.loads(response.read())
 
 external_stylesheets = [dbc.themes.LITERA]  
@@ -76,13 +76,13 @@ def render_page_content(pathname):
                 html.H6('Основные показатели'),
                             dcc.RadioItems(
                             options = [
-                                {'label':'ВВП', 'value': 'VVP'},
-                                {'label':'Доля инновационно активных организаций', 'value': 'Dolya_innovatsionno_aktivnykh_organizatsiy'},
-                                {'label':'Доля инновационных продуктов', 'value': 'Dolya_innovatsionnykh_produktov'},
-                                {'label':'Инвестиции в основной капитал на душу населения', 'value': 'Investitsii_v_osnovnoy_kapital'},
+                                {'label':'ВВП', 'value': 'ВВП'},
+                                {'label':'Доля инновационно активных организаций', 'value': 'Доля инновационно активных организации'},
+                                {'label':'Доля инновационных продуктов', 'value': 'Доля инновационных продуктов'},
+                                {'label':'Инвестиции в основной капитал на душу населения', 'value': 'Инвестиции в основной капитал на душу населения'},
                             ],
                             id = 'crossfilter-ind0',
-                            value = 'VVP',
+                            value = 'ВВП',
                             labelStyle={'display': 'inline-block', 'width': '19%', 'float': 'left'}
                             )
                         ],
@@ -220,7 +220,7 @@ def render_page_content(pathname):
                 dbc.Col([
                     dbc.Card([
                         dbc.Row([
-                            dbc.CardHeader("Доходы регион. бюджета, млн руб.")
+                            dbc.CardHeader("Доходы регионального бюджета, млн руб.")
                             ]),
                             dbc.Row([
                                 dbc.Col([
@@ -229,14 +229,14 @@ def render_page_content(pathname):
                                             id='card_text1',
                                             className="card-value"),
                                         ),
-                                        ],style = {'width': '170px','float': 'center', 'display': 'inline-block'}, width= 8),
+                                        ],style = {'font-size': '1.33em','width': '175px','float': 'center', 'display': 'inline-block'}, width=2),
                                     ])
                                 ], color = "success", outline=True, style={'textAlign': 'center'}),
-                            ],style = {'width': '15%','float': 'center', 'display': 'inline-block'},width=2),
+                            ],style = {'font-size': '0.8em','width': '15%','float': 'center', 'display': 'inline-block'},width=3),
                 dbc.Col([
                     dbc.Card([
                         dbc.Row([
-                            dbc.CardHeader("Расходы регион. бюджета, млн руб.")
+                            dbc.CardHeader("Расходы регионального бюджета, млн руб.")
                             ]),
                             dbc.Row([
                                 dbc.Col([
@@ -245,14 +245,14 @@ def render_page_content(pathname):
                                             id='card_text2',
                                             className="card-value",)
                                         ]
-                                        )],style = {'width': '170px','float': 'center', 'display': 'inline-block'}, width=8),
+                                        )],style = {'font-size': '1.33em','width': '170px','float': 'center', 'display': 'inline-block'}, width=2),
                                     ])
                                 ], color = "info", outline=True, style={'textAlign': 'center'}),
-                            ],style = {'width': '15%','float': 'center', 'display': 'inline-block'},width=2),
+                            ],style = {'font-size': '0.8em','width': '15%','float': 'center', 'display': 'inline-block'},width=3),
                 dbc.Col([
                     dbc.Card([
                         dbc.Row([
-                            dbc.CardHeader("Сальдо регион. бюджета, млн руб.")
+                            dbc.CardHeader("Сальдо регионального бюджета, в млн руб.")
                             ]),
                             dbc.Row([
                                 dbc.Col([
@@ -261,10 +261,10 @@ def render_page_content(pathname):
                                             id='card_text3',
                                             className="card-value"),
                                         ),
-                                        ],style = {'width': '170px','float': 'center', 'display': 'inline-block'}, width= 8),
+                                        ],style = {'font-size': '1.33em','width': '170px','float': 'center', 'display': 'inline-block'}, width=2),
                                 ])
                             ], color = "success", outline=True, style={'textAlign': 'center'}),
-                        ],style = {'width': '16%','float': 'center', 'display': 'inline-block'},width=2),
+                        ],style = {'font-size': '0.8em','width': '15%','float': 'center', 'display': 'inline-block'},width=3),
                         dbc.Col([
                 dbc.Card([
                     dbc.Row([
@@ -277,14 +277,14 @@ def render_page_content(pathname):
                                         id='card_text4',
                                         className="card-value"),
                                     ),
-                                    ],style = {'width': '170px','float': 'center', 'display': 'inline-block'}, width= 8),
+                                    ],style = {'font-size': '1.33em','width': '170px','float': 'center', 'display': 'inline-block'}, width=2),
                                 ])
                             ], color = "info", outline=True, style={'textAlign': 'center'}),
-                        ],style = {'width': '16%','float': 'center', 'display': 'inline-block'},width=2),
+                        ],style = {'font-size': '0.8em','width': '15%','float': 'center', 'display': 'inline-block'},width=2),
                 dbc.Col([
                     dbc.Card([
                         dbc.Row([
-                            dbc.CardHeader("Доля иннв.-активных орг-ий,%")
+                            dbc.CardHeader("Доля иннвационно-активных организаций, %")
                             ]),
                             dbc.Row([
                                 dbc.Col([
@@ -293,14 +293,14 @@ def render_page_content(pathname):
                                             id='card_text5',
                                             className="card-value",),
                                         ]
-                                        )],style = {'width': '170px','float': 'center', 'display': 'inline-block'}, width=8),
+                                        )],style = {'font-size': '1.33em','width': '175px','float': 'center', 'display': 'inline-block'}, width=2),
                                     ])
                                 ], color = "success", outline=True, style={'textAlign': 'center'}),
-                            ],style = {'width': '16%','float': 'center', 'display': 'inline-block'},width=2),
+                            ],style = {'font-size': '0.8em','width': '17%','float': 'center', 'display': 'inline-block'},width=1),
                 dbc.Col([
                     dbc.Card([
                         dbc.Row([
-                            dbc.CardHeader("Инвестиции в осн. капитал, руб.")
+                            dbc.CardHeader("Инвестиции в основной капитал на душу населения, руб.")
                             ]),
                             dbc.Row([
                                 dbc.Col([
@@ -309,17 +309,20 @@ def render_page_content(pathname):
                                             id='card_text6',
                                             className="card-value"),
                                         ),
-                                        ],style = {'width': '160px','float': 'center', 'display': 'inline-block'}, width= 10),
+                                        ],style = {'font-size': '1.33em','width': '160px','float': 'center', 'display': 'inline-block'}, width=2),
                                 ])
                             ], color = "primary", outline=True, style={'textAlign': 'center'}),
-                        ],style = {'width': '15%','float': 'center', 'display': 'inline-block'},width=2),
+                        ],style = {'font-size': '0.8em','width': '16%','float': 'center', 'display': 'inline-block'},width=2),
             ]),
+
+
             html.Br(),
             dbc.Row ([
                 dbc.Col(
                         html.Div([
                         html.Hr(style={'color': 'black'}),
                         html.H5("ВВП на душу населения"),
+                        dbc.Badge(id="region-badge1", color="primary", className="mr-1"),
                     ], style={'textAlign': 'center'})
                 )
             ]),
@@ -328,10 +331,12 @@ def render_page_content(pathname):
                     style = {'width': '100%', 'float': 'right', 'display': 'inline-block'}
                 ),
             dbc.Row ([
+                
                 dbc.Col(
                         html.Div([
                         html.Hr(style={'color': 'black'}),
                         html.H5("Сальдо региональнного бюджета"),
+                        dbc.Badge(id="region-badge2", color="primary", className="mr-1"),
                     ], style={'textAlign': 'center'})
                 )
             ]), 
@@ -339,35 +344,26 @@ def render_page_content(pathname):
                     dcc.Graph(id = 'sald'),
                     style = {'width': '100%', 'float': 'right', 'display': 'inline-block'}
                 ),
-            dbc.Row ([
+            dbc.Row([
                 dbc.Col(
-                        html.Div([
+                    html.Div([
                         html.Hr(style={'color': 'black'}),
-                        html.H5("Доходы региональнного бюджета"),
-                    ], style={'textAlign': 'center'})
-                ), 
-                html.Div(
-                    dcc.Graph(id = 'dox'),
-                    style = {'width': '100%', 'float': 'right', 'display': 'inline-block'}
-                ),
-            ]),    
-            dbc.Row ([
-                dbc.Col(
-                        html.Div([
-                        html.Hr(style={'color': 'black'}),
-                        html.H5("Расходы региональнного бюджета"),
+                        html.H5("Доходы и расходы регионального бюджета"),
+                        dbc.Badge(id="region-badge3", color="primary", className="mr-1"),
                     ], style={'textAlign': 'center'})
                 ),
                 html.Div(
-                    dcc.Graph(id = 'ras'),
-                    style = {'width': '100%', 'display': 'inline-block'}
+                    dcc.Graph(id='dox'),
+                    style={'width': '100%', 'float': 'right', 'display': 'inline-block'}
                 ),
-            ]), 
+            ]),
+            
             dbc.Row ([
                 dbc.Col(
                         html.Div([
                         html.Hr(style={'color': 'black'}),
                         html.H5("Инвестиции в основной капитал на душу населения"),
+                        dbc.Badge(id="region-badge4", color="primary", className="mr-1"),
                     ], style={'textAlign': 'center'})
                 )
             ]), 
@@ -380,6 +376,7 @@ def render_page_content(pathname):
                         html.Div([
                         html.Hr(style={'color': 'black'}),
                         html.H5("Глубина 'воронки отсталости'"),
+                        dbc.Badge(id="region-badge5", color="primary", className="mr-1"),
                     ], style={'textAlign': 'center'})
                 ),html.Div(
                     dcc.Graph(id = 'vor'),
@@ -393,34 +390,35 @@ def render_page_content(pathname):
             dbc.Row ([
                 dbc.Col(
                         html.Div([
-                        html.H3("Тепловая карта показателей за 2023"),
+                        html.H3("Тепловая карта показателей"),
                         html.Hr(style={'color': 'black'}),
                     ], style={'textAlign': 'center'})
                 )
             ]),
+        
             html.Br(),
             dbc.Row ([
                 dbc.Col([
                     dbc.Label("Выберите показатель:"),
                     dbc.RadioItems(
                         options=[
-                            {'label':'ВВП', 'value': 'VVP'},
-                            {'label':'Доля инновационно активных организаций', 'value': 'Dolya_innovatsionno_aktivnykh_organizatsiy'},
-                            {'label':'Доля инновационных продуктов', 'value': 'Dolya_innovatsionnykh_produktov'},
-                            {'label':'Инвестиции в основной капитал на душу населения', 'value': 'Investitsii_v_osnovnoy_kapital'},
+                            {'label':'ВВП', 'value': 'ВВП'},
+                            {'label':'Доля инновационно активных организаций', 'value': 'Доля инновационно активных организации'},
+                            {'label':'Доля инновационных продуктов', 'value': 'Доля инновационных продуктов'},
+                            {'label':'Инвестиции в основной капитал на душу населения', 'value': 'Инвестиции в основной капитал на душу населения'},
                         ],
-                        value='VVP',
+                        value='ВВП',
                         id='crossfilter-ind2',
                     ),
                 ],width=3),
             
                 dbc.Col([
                     dcc.Graph(id = 'rusmap', config={'displayModeBar': False}),
-                ], width=7)
-            ],style = {
+                ], width=9)
+            ],style = {'font-size': '0.8em',
                     'borderBottom': 'thin lightgrey solid',
                     'backgroundColor': 'rgb(242,248,253)',
-                    'padding': '5px 5px'}) 
+                    'padding': '5px 10px'}) 
         ]
     elif pathname == "/page-3":
         return [
@@ -438,7 +436,7 @@ def render_page_content(pathname):
                 dbc.Col(
                         html.Div([
                         html.H4("Анализ региональной экономики России"),
-                    ], style={'textAlign': 'center'})
+                    ], style={'textAlign': 'left'})
                 )
             ]), 
             dbc.Row ([
@@ -453,8 +451,9 @@ def render_page_content(pathname):
             dbc.Row ([
                 dbc.Col(
                         html.Div([
+                        html.H2(""),
                         html.H4("Актуальные вопросы, решаемые дашбордом"),
-                    ], style={'textAlign': 'center'})
+                    ], style={'textAlign': 'left'})
                 )
             ]),
              dbc.Row ([
@@ -482,8 +481,9 @@ def render_page_content(pathname):
             dbc.Row ([
                 dbc.Col(
                         html.Div([
+                        html.H2(""),
                         html.H4("Как собирались данные"),
-                    ], style={'textAlign': 'center'})
+                    ], style={'textAlign': 'left'})
                 )
             ]),
             dbc.Row ([
@@ -496,42 +496,43 @@ def render_page_content(pathname):
             dbc.Row ([
                 dbc.Col(
                         html.Div([
-                        html.H5("В датасете содержатся показатели, большинство из которых предоставлено Росстатом, вот ключевые из них:"),
-                        html.H6("ВВП:"),
-                        html.P("валовой внутренний продукт является одним из важнейших показателей экономического развития региона;", className="display-20"),
-                        html.H6("Воронки отсталости:"),
-                        html.P("рассчитанные на базе ВВП,  отражают собой механизм потери отдельными регионами возможностей для развития вследствие отставания во времени;", className="display-20"),
-                        html.H6("Доходы регионального бюджета:"),
-                        html.P("денежные поступления, складывающиеся из доходов от региональных налогов и сборов.", className="display-20"),
-                        html.H6("Расходы регионального бюджета:"),
-                        html.P("денежные средства, направляемые из бюджетного фонда на финансовое обеспечение выполняемых задач и функций региона.", className="display-20"),
-                        html.H6("Сальдо:"),
-                        html.P("сальдо регионального бюджета представляет собой соотношение между доходной и расходной частями бюджета;", className="display-20"),
-                        html.H6("Доля инновационно активных организаций:"),
-                        html.P("доля компаний, занимающихся инновациями;", className="display-20"),
-                        html.H6("Доля инновационных продуктов:"),
-                        html.P("доля инновационной продукции региона (товаров, услуг), созданной с использованием результатов интеллектуальной деятельности;", className="display-20"),
-                        html.H6("Инвестиции в основной капитал на душу населения:"),
-                        html.P("показывает объем инвестиций в основной капитал, что является индикатором будущего экономического роста.", className="display-20"),
+                        html.H6("В датасете содержатся показатели, большинство из которых предоставлено Росстатом, вот ключевые из них:"),
+                        html.P("ВВП: валовой внутренний продукт является одним из важнейших показателей экономического развития региона;", className="display-20"),
+                        html.P("Воронки отсталости: рассчитанные на базе ВВП,  отражают собой механизм потери отдельными регионами возможностей для развития вследствие отставания во времени;", className="display-20"),
+                        html.P("Доходы регионального бюджета: денежные поступления, складывающиеся из доходов от региональных налогов и сборов.", className="display-20"),
+                        html.P("Расходы регионального бюджета: денежные средства, направляемые из бюджетного фонда на финансовое обеспечение выполняемых задач и функций региона.", className="display-20"),
+                        html.P("Сальдо: сальдо регионального бюджета представляет собой соотношение между доходной и расходной частями бюджета;", className="display-20"),
+                        html.P("Доля инновационно активных организаций: доля компаний, занимающихся инновациями;", className="display-20"),
+                        html.P("Доля инновационных продуктов: доля инновационной продукции региона (товаров, услуг), созданной с использованием результатов интеллектуальной деятельности;", className="display-20"),
+                        html.P("Инвестиции в основной капитал на душу населения: показывает объем инвестиций в основной капитал, что является индикатором будущего экономического роста.", className="display-20"),
                     ], style={'textAlign': 'left'})
                 )
             ]),
             dbc.Row ([
                 dbc.Col(
                         html.Div([
+                        html.H2(""),
                         html.H4("Подготовка данных"),
-                        html.P("Для дальнейшего анализа данные были обработаны и подготовлены. С получившимся датасетом можно ознакомиться по ссылке: https://docs.google.com/spreadsheets/d/e/2PACX-1vRWse4Knyb73VWoIywsaDSMAbRmHnJKhYlfPqM7sUOdk9hlJam1kZIRSmIjqJbjZKMg-OfWP37HROJu/pubhtml.", className="display-18"),                    
+                        html.P("Для дальнейшего анализа данные были обработаны и подготовлены. С получившимся датасетом можно ознакомиться по ссылке:", className="display-18"),
+                        html.P("https://docs.google.com/spreadsheets/d/e/2PACX-1vRWse4Knyb73VWoIywsaDSMAbRmHnJKhYlfPqM7sUOdk9hlJam1kZIRSmIjqJbjZKMg-OfWP37HROJu/pubhtml.", className="display-18"),                    
                         ], style={'textAlign': 'left'})
                 )
             ]),
             dbc.Row ([
                 dbc.Col(
                         html.Div([
+                        html.H4(""),
                         html.H4("Визуализация данных"),
-                        html.P("Код для визуализации данных был написан нами с использованием средств python. Полностью код можно посмотреть на GitHub (Макарова)(https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis) и GitHub (Калинина)(https://github.com/Kal1n1na/Russian_Regional_Economy_Analysis).", className="display-18"),                    
-                        html.H6("Полностью код можно посмотреть на GitHub"),
-                        html.P("(Макарова)(https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis)", className="display-18"),
-                        html.P("(Калинина)(https://github.com/Kal1n1na/Russian_Regional_Economy_Analysis).", className="display-18"),
+                    ], style={'textAlign': 'left'})
+                )
+            ]),
+            dbc.Row ([
+                dbc.Col(
+                        html.Div([                        
+                        html.P("Код для визуализации данных был написан нами с использованием средств python.", className="display-18"),                    
+                        html.P("Полностью код можно посмотреть на GitHub"),
+                        html.P("(Макарова - https://github.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis)", className="display-18"),
+                        html.P("(Калинина - https://github.com/Kal1n1na/Russian_Regional_Economy_Analysis).", className="display-18"),
                         ], style={'textAlign': 'left'})
                 )
             ]),  
@@ -553,19 +554,20 @@ def render_page_content(pathname):
 )
 def update_stacked_area(indication, year):
     filtered_data = df[(df['Year'] == year)]
-    figure = px.bar(
+    figure = px.treemap(
         filtered_data,
-        x = indication,
-        y = 'Region',
+        names='Region',
+        values=indication,
+        parents=[''] * len(filtered_data),  
+        color='Region',
+        color_continuous_scale=px.colors.sequential.Blues,
         labels={'Region':'Регион', 'Year':'Год',
-                'Dolya_innovatsionnykh_produktov':'Доля инновационных продуктов', 'VVP':'ВВП',
-                'Dolya_innovatsionno_aktivnykh_organizatsiy':'Доля инновационно-активных организаций',
-                'Investitsii_v_osnovnoy_kapital':'Инвестиции в основной капитал на душу населения'},
-                )
-    figure.update_layout(mapbox_style="carto-positron",
-                        margin={"r":0,"t":0,"l":0,"b":0},
-                        mapbox_zoom=2, mapbox_center = {"lat": 66, "lon": 94}, height=800, width=1000,
-                        showlegend=False)
+                'Доля инновационных продуктов':'Доля инновационных продуктов', 'ВВП':'ВВП',
+                'Доля инновационно активных организации':'Доля инновационно-активных организаций',
+                'Инвестиции в основной капитал на душу населения':'Инвестиции в основной капитал на душу населения'},
+    )
+
+    figure.update_layout(margin={"r":0,"t":0,"l":0,"b":0}, height=800, width=1000, showlegend=False)
     return figure
 
 
@@ -577,8 +579,10 @@ def update_stacked_area(indication, year):
 def update_table(indication, year):
     vvp_count = df[(df['Year'] == year)].sort_values(by=indication, ascending=False)
     vvp_table = vvp_count.iloc[0:10][['Region', indication]]
+    vvp_table.columns = ['Регион', indication] 
     table = dbc.Table.from_dataframe(
-        vvp_table, striped=True, bordered=True, hover=True, index=False)
+        vvp_table, striped=True, bordered=True, hover=True, index=False,
+    )
     return table
 
 @callback(
@@ -590,11 +594,18 @@ def update_table(indication, year):
 def update_card1(year):
     df_count=df[(df['Year'] <= year) ]
 
-    c1=df_count['Dokhody_regionalnogo_byudzheta'].sum()
-    c2=df_count['Raskhody_regionalnogo_byudzheta'].sum()
-    c3=df_count['Saldo_regionalnogo_byudzheta'].sum()
+    c1=df_count['Доходы регионального бюджета'].sum()
+    c2=df_count['Расходы регионального бюджета'].sum()
+    c3=df_count['Сальдо регионального бюджета'].sum()
     
     return c1,c2,c3
+
+@callback(
+    Output('region-badge1', 'children'),
+    [Input('crossfilter-reg', 'value')]
+)
+def update_region_badge(reg):
+    return reg
 
 @callback(
     Output('vvp', 'figure'),
@@ -607,12 +618,24 @@ def update_vvp(reg, year):
     figure = px.line(
         filtered_data,
         x='Year',
-        y='VVP',
-        markers = False,
-        labels={ 'Year':'Год',
-                'VVP':'ВВП на душу населения'},
+        y='ВВП',
+        markers=False,
+        labels={'Year':'Год', 'ВВП':'ВВП на душу населения'},
+    )
+    figure.update_layout(
+        xaxis=dict(
+            tickvals=filtered_data['Year'].unique(),
+            ticktext=filtered_data['Year'].unique().astype(int).astype(str)
+        )
     )
     return figure
+
+@callback(
+    Output('region-badge2', 'children'),
+    [Input('crossfilter-reg', 'value')]
+)
+def update_region_badge(reg):
+    return reg
 
 @callback(
     Output('sald', 'figure'),
@@ -625,12 +648,24 @@ def update_sald(reg, year):
     figure = px.line(
         filtered_data,
         x='Year',
-        y='Saldo_regionalnogo_byudzheta',
-        markers = False,
-        labels={ 'Year':'Год',
-                'Saldo_regionalnogo_byudzheta':'Сальдо региональнного бюджета'},
+        y='Сальдо регионального бюджета',
+        markers=False,
+        labels={'Year':'Год', 'Сальдо регионального бюджета':'Сальдо региональнного бюджета'},
+    )
+    figure.update_layout(
+        xaxis=dict(
+            tickvals=filtered_data['Year'].unique(),
+            ticktext=filtered_data['Year'].unique().astype(int).astype(str)
+        )
     )
     return figure
+
+@callback(
+    Output('region-badge3', 'children'),
+    [Input('crossfilter-reg', 'value')]
+)
+def update_region_badge(reg):
+    return reg
 
 @callback(
     Output('dox', 'figure'),
@@ -640,33 +675,28 @@ def update_sald(reg, year):
 )
 def update_dox(reg, year):
     filtered_data = df[(df['Year'] <= year) & (df['Region'] == reg)] 
-    figure = px.line(
+    fig = px.line(
         filtered_data,
         x='Year',
-        y='Dokhody_regionalnogo_byudzheta',
-        markers = False,
-        labels={ 'Year':'Год',
-                'Dokhody_regionalnogo_byudzheta':'Доходы региональнного бюджета'},
+        y=['Доходы регионального бюджета', 'Расходы регионального бюджета'],
+        markers=False,
+        labels={'Year':'Год', 'value':'Значение'},
     )
-    return figure
+    fig.update_layout(
+        xaxis=dict(
+            tickvals=filtered_data['Year'].unique(),
+            ticktext=filtered_data['Year'].unique().astype(int).astype(str)
+        ),
+        legend_title_text='Тип бюджета'
+    )
+    return fig
 
 @callback(
-    Output('ras', 'figure'),
-    [Input('crossfilter-reg', 'value'),
-     Input('crossfilter-year1', 'value')
-    ]
+    Output('region-badge4', 'children'),
+    [Input('crossfilter-reg', 'value')]
 )
-def update_ras(reg, year):
-    filtered_data = df[(df['Year'] <= year) & (df['Region'] == reg)] 
-    figure = px.line(
-        filtered_data,
-        x='Year',
-        y='Raskhody_regionalnogo_byudzheta',
-        markers = False,
-        labels={ 'Year':'Год',
-                'Raskhody_regionalnogo_byudzheta':'Расходы региональнного бюджета'},
-    )
-    return figure
+def update_region_badge(reg):
+    return reg
 
 @callback(
     Output('inv', 'figure'),
@@ -679,12 +709,24 @@ def update_inv(reg, year):
     figure = px.line(
         filtered_data,
         x='Year',
-        y='Investitsii_v_osnovnoy_kapital',
-        markers = False,
-        labels={ 'Year':'Год',
-                'Investitsii_v_osnovnoy_kapital':'Инвестиции в основной капитал на душу населения'},
+        y='Инвестиции в основной капитал на душу населения',
+        markers=False,
+        labels={'Year':'Год', 'Инвестиции в основной капитал на душу населения':'Инвестиции в основной капитал на душу населения'},
+    )
+    figure.update_layout(
+        xaxis=dict(
+            tickvals=filtered_data['Year'].unique(),
+            ticktext=filtered_data['Year'].unique().astype(int).astype(str)
+        )
     )
     return figure
+
+@callback(
+    Output('region-badge5', 'children'),
+    [Input('crossfilter-reg', 'value')]
+)
+def update_region_badge(reg):
+    return reg
 
 @callback(
     Output('vor', 'figure'),
@@ -697,11 +739,15 @@ def update_vor(reg, year):
     figure = px.bar(
         filtered_data,
         x='Year',
-        y='Glubina_voronki',
-        labels={ 'Year':'Год',
-                'Glubina_voronki':'Глубина воронки отсталости'},
+        y='Глубина воронки',
+        labels={'Year':'Год', 'Глубина воронки':'Глубина воронки отсталости'},
     )
-
+    figure.update_layout(
+        xaxis=dict(
+            tickvals=filtered_data['Year'].unique(),
+            ticktext=filtered_data['Year'].unique().astype(int).astype(str)
+        )
+    )
     return figure
 
 @callback(
@@ -718,51 +764,52 @@ def update_vor(reg, year):
 def update_card2(reg, year):
     df_count=df[(df['Year'] == year) & (df['Region'] == reg)]
 
-    ct1=df_count.iloc[0]['Dokhody_regionalnogo_byudzheta']
-    ct2=df_count.iloc[0]['Raskhody_regionalnogo_byudzheta']
-    ct3=df_count.iloc[0]['Saldo_regionalnogo_byudzheta']
-    ct4=df_count.iloc[0]['Dolya_innovatsionnykh_produktov']
-    ct5=df_count.iloc[0]['Dolya_innovatsionno_aktivnykh_organizatsiy']
-    ct6=df_count.iloc[0]['Investitsii_v_osnovnoy_kapital']
+    ct1=df_count.iloc[0]['Доходы регионального бюджета']
+    ct2=df_count.iloc[0]['Расходы регионального бюджета']
+    ct3=df_count.iloc[0]['Сальдо регионального бюджета']
+    ct4=df_count.iloc[0]['Доля инновационных продуктов']
+    ct5=df_count.iloc[0]['Доля инновационно активных организации']
+    ct6=df_count.iloc[0]['Инвестиции в основной капитал на душу населения']
     
     return ct1,ct2,ct3,ct4,ct5,ct6,
 
+
 @callback(
     Output('rusmap', 'figure'),
-    [Input('crossfilter-ind2', 'value'),
-    ])
-
+    [Input('crossfilter-ind2', 'value')]
+)
 def update_rusmap(indication):
+    # Assume df is a Pandas DataFrame with the required columns
+    filtered_data = df[(df['Year'] <= 2023)]
+    
+    # Assume counties is a valid GeoJSON object
     figure = px.choropleth_mapbox(
-        df,
+        filtered_data,
         geojson=counties,
         featureidkey='properties.cartodb_id',
-        color=indication,
+        color=indication,  # Replace with a valid column name
         locations='cartodb_id',
         color_continuous_scale=px.colors.sequential.Blues,
         mapbox_style="carto-positron",
-        zoom=10,
-        center = {'lat':55.755773, 'lon':37.617761},
+        zoom=20,
         opacity=0.5,
         hover_name='Region',
-        hover_data = {'Region':True,'Year':True,'cartodb_id':False,
-                    'VVP':True,'Dolya_innovatsionno_aktivnykh_organizatsiy':True,
-                    'Dolya_innovatsionnykh_produktov':True,'Investitsii_v_osnovnoy_kapital':True,
-                    'Okrug':False},
-        labels={'Region':'Регион', 'Year':'Год',
-                'Dolya_innovatsionnykh_produktov':'Доля иннв. продуктов', 'VVP':'ВВП',
-                'Dolya_innovatsionno_aktivnykh_organizatsiy':'Доля иннв-актив. организаций',
-                'Investitsii_v_osnovnoy_kapital':'Инвестиции в капитал '},
-                #animation_frame='Year',
-
-        )
-   
+        hover_data={'Region': True, 'Year': True, 'cartodb_id': False,
+                    'ВВП': True, 'Доля инновационно активных организации': True,
+                    'Доля инновационных продуктов': True, 'Инвестиции в основной капитал на душу населения': True,
+                    'Okrug': False},
+        labels={'Region': 'Регион', 'Year': 'Год',
+                'Доля инновационных продуктов': 'Доля иннвационных продуктов', 'ВВП': 'ВВП',
+                'Доля инновационно активных организации': 'Доля иннвационно-активных организаций',
+                'Инвестиции в основной капитал на душу населения': 'Инвестиции в капитал'},
+        animation_frame='Year'  # Make sure Year is a numeric or datetime column
+    )
+    
     figure.update_layout(mapbox_style="carto-positron",
                         margin={"r":0,"t":0,"l":0,"b":0}, geo_scope='world',
-                        mapbox_zoom=2, mapbox_center = {"lat": 66, "lon": 94}, height=500, width=800,
+                        mapbox_zoom=1.8, mapbox_center = {"lat": 65, "lon": 95}, height=500, width=800,
                         showlegend=False)
     return figure
-
 
 if __name__ == '__main__':
         app.run_server(debug=True)
