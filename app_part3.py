@@ -3,6 +3,7 @@ from dash import Dash, Input, callback, Output, dcc, html
 import pandas as pd
 import plotly.express as px
 import json
+import plotly.graph_objects as go
 
 df = pd.read_csv('https://raw.githubusercontent.com/Anastas1aMakarova/Russian_Regional_Economy_Analysis/main/regions.csv', sep=';')
 all_cont = df['Okrug'].unique()
@@ -208,7 +209,7 @@ def render_page_content(pathname):
                 dcc.Dropdown(
                         id = 'crossfilter-year1',
                         options = [{'label': i, 'value': i} for i in all_year],
-                        value = all_year[0],
+                        value = all_year[1],
                         # возможность множественного выбора
                         multi = False
                     )
@@ -216,105 +217,40 @@ def render_page_content(pathname):
             ]),
 
             html.Br(),
-            dbc.Row([
-                dbc.Col([
-                    dbc.Card([
-                        dbc.Row([
-                            dbc.CardHeader("Доходы регионального бюджета, млн руб.")
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dbc.CardBody(
-                                        html.P(
-                                            id='card_text1',
-                                            className="card-value"),
-                                        ),
-                                        ],style = {'font-size': '1.33em','width': '175px','float': 'center', 'display': 'inline-block'}, width=2),
-                                    ])
-                                ], color = "success", outline=True, style={'textAlign': 'center'}),
-                            ],style = {'font-size': '0.8em','width': '15%','float': 'center', 'display': 'inline-block'},width=3),
-                dbc.Col([
-                    dbc.Card([
-                        dbc.Row([
-                            dbc.CardHeader("Расходы регионального бюджета, млн руб.")
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dbc.CardBody([
-                                        html.P(
-                                            id='card_text2',
-                                            className="card-value",)
-                                        ]
-                                        )],style = {'font-size': '1.33em','width': '170px','float': 'center', 'display': 'inline-block'}, width=2),
-                                    ])
-                                ], color = "info", outline=True, style={'textAlign': 'center'}),
-                            ],style = {'font-size': '0.8em','width': '15%','float': 'center', 'display': 'inline-block'},width=3),
-                dbc.Col([
-                    dbc.Card([
-                        dbc.Row([
-                            dbc.CardHeader("Сальдо регионального бюджета, в млн руб.")
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dbc.CardBody(
-                                        html.P(
-                                            id='card_text3',
-                                            className="card-value"),
-                                        ),
-                                        ],style = {'font-size': '1.33em','width': '170px','float': 'center', 'display': 'inline-block'}, width=2),
-                                ])
-                            ], color = "success", outline=True, style={'textAlign': 'center'}),
-                        ],style = {'font-size': '0.8em','width': '15%','float': 'center', 'display': 'inline-block'},width=3),
-                        dbc.Col([
-                dbc.Card([
-                    dbc.Row([
-                        dbc.CardHeader("Доля инновационных продуктов, %")
-                        ]),
-                        dbc.Row([
-                            dbc.Col([
-                                dbc.CardBody(
-                                    html.P(
-                                        id='card_text4',
-                                        className="card-value"),
-                                    ),
-                                    ],style = {'font-size': '1.33em','width': '170px','float': 'center', 'display': 'inline-block'}, width=2),
-                                ])
-                            ], color = "info", outline=True, style={'textAlign': 'center'}),
-                        ],style = {'font-size': '0.8em','width': '15%','float': 'center', 'display': 'inline-block'},width=2),
-                dbc.Col([
-                    dbc.Card([
-                        dbc.Row([
-                            dbc.CardHeader("Доля иннвационно-активных организаций, %")
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dbc.CardBody([
-                                        html.P(
-                                            id='card_text5',
-                                            className="card-value",),
-                                        ]
-                                        )],style = {'font-size': '1.33em','width': '175px','float': 'center', 'display': 'inline-block'}, width=2),
-                                    ])
-                                ], color = "success", outline=True, style={'textAlign': 'center'}),
-                            ],style = {'font-size': '0.8em','width': '17%','float': 'center', 'display': 'inline-block'},width=1),
-                dbc.Col([
-                    dbc.Card([
-                        dbc.Row([
-                            dbc.CardHeader("Инвестиции в основной капитал на душу населения, руб.")
-                            ]),
-                            dbc.Row([
-                                dbc.Col([
-                                    dbc.CardBody(
-                                        html.P(
-                                            id='card_text6',
-                                            className="card-value"),
-                                        ),
-                                        ],style = {'font-size': '1.33em','width': '160px','float': 'center', 'display': 'inline-block'}, width=2),
-                                ])
-                            ], color = "primary", outline=True, style={'textAlign': 'center'}),
-                        ],style = {'font-size': '0.8em','width': '16%','float': 'center', 'display': 'inline-block'},width=2),
-            ]),
+            dbc.Row([  
+            dbc.Col([
+            dbc.Col([
+                dbc.Row([
+                    html.Div(id="cards_1"),
+                ]),],style = {'font-size': '1em','width': '33%','float': 'center', 'display': 'inline-block'},width=2),
+                
+            dbc.Col([
+                dbc.Row([
+                    html.Div(id="cards_2"),
+                ]),],style = {'font-size': '1em','width': '33%','float': 'center', 'display': 'inline-block'},width=2),
+                
+            dbc.Col([
+                dbc.Row([
+                    html.Div(id="cards_3"),
+                ]),],style = {'font-size': '1em','width': '33%','float': 'center', 'display': 'inline-block'},width=2),
+                ],style = {'font-size': '0.8em','width':'100%','float': 'center', 'display': 'inline-block'},width=2),
 
+        dbc.Col([        
+            dbc.Col([
+                dbc.Row([
+                    html.Div(id="cards_4"),
+                ])],style = {'font-size': '1em','width': '33%','float': 'center', 'display': 'inline-block'},width=2),
+                
+            dbc.Col([
+                dbc.Row([
+                    html.Div(id="cards_5"),
+                ]),],style = {'font-size': '1em','width': '33%','float': 'center', 'display': 'inline-block'},width=2),    
+            dbc.Col([
+                dbc.Row([
+                    html.Div(id="cards_6"),
+                ]),],style = {'font-size': '1.25em','width': '33%','float': 'center', 'display': 'inline-block'},width=1),
+                
+            ],style = {'font-size': '0.8em','height':'100%','width':'100%','float': 'center', 'display': 'inline-block'},width=2),
 
             html.Br(),
             dbc.Row ([
@@ -382,7 +318,7 @@ def render_page_content(pathname):
                     dcc.Graph(id = 'vor'),
                     style = {'width': '100%', 'display': 'inline-block'}
                 ),
-            ]), 
+            ]),]) 
         ]
     
     elif pathname == "/page-2":
@@ -750,29 +686,228 @@ def update_vor(reg, year):
     )
     return figure
 
+
 @callback(
-    Output('card_text1', 'children'),
-    Output('card_text2', 'children'),
-    Output('card_text3', 'children'),
-    Output('card_text4', 'children'),
-    Output('card_text5', 'children'),
-    Output('card_text6', 'children'),
+    Output('cards_1', 'children'),
+     [Input('crossfilter-reg', 'value'),
+     Input('crossfilter-year1', 'value')
+    ]
+)
+def update_cards2(reg, year):
+    df_count=df[(df['Year'] == year) & (df['Region'] == reg)]
+    df_count2=df[(df['Year'] == year - 1) & (df['Region'] == reg)]
+
+    dow2=df_count.iloc[0]['Доходы регионального бюджета']
+    dow1=df_count2.iloc[0]['Доходы регионального бюджета']
+
+    fig = go.Figure(go.Indicator(
+        mode = "number+delta",
+        value = dow2,
+        number = {'prefix': ""},
+        delta = {'position': "top", 'relative': True,'reference': dow1},
+        domain = {'x': [0, 1], 'y': [0.25, 0.75]}))
+    fig.update_layout(
+        autosize=False,
+        width=280,
+        height=280,
+        )
+    cards_1 = dbc.Card([
+        dbc.Row([
+            dbc.CardHeader("Доходы регионального бюджета"),
+                 ]),
+        dbc.Row([
+            html.Div([
+                dcc.Graph(figure=fig),
+                ], style={'textAlign': 'center'})
+            ],)
+            ], style={'textAlign': 'center'}) # , "height": "1rem"
+            
+    return cards_1
+
+@callback(
+    Output('cards_2', 'children'),
      [Input('crossfilter-reg', 'value'),
      Input('crossfilter-year1', 'value')
     ]
 )
 def update_card2(reg, year):
     df_count=df[(df['Year'] == year) & (df['Region'] == reg)]
+    df_count2=df[(df['Year'] == year - 1) & (df['Region'] == reg)]
 
-    ct1=df_count.iloc[0]['Доходы регионального бюджета']
-    ct2=df_count.iloc[0]['Расходы регионального бюджета']
-    ct3=df_count.iloc[0]['Сальдо регионального бюджета']
-    ct4=df_count.iloc[0]['Доля инновационных продуктов']
-    ct5=df_count.iloc[0]['Доля инновационно активных организации']
-    ct6=df_count.iloc[0]['Инвестиции в основной капитал на душу населения']
+    ras2=df_count.iloc[0]['Расходы регионального бюджета']
+    ras1=df_count2.iloc[0]['Расходы регионального бюджета']
     
-    return ct1,ct2,ct3,ct4,ct5,ct6,
+    fig = go.Figure(go.Indicator(
+        mode = "number+delta",
+        value = ras2,
+        number = {'prefix': ""},
+        delta = {'position': "top", 'relative': True,'reference': ras1},
+        domain = {'x': [0, 1], 'y': [0.25, 0.75]}))
+    fig.update_layout(
+        #autosize=False,
+        width=280,
+        height=280,
+        )
+    cards_2 = dbc.Card([
+        dbc.Row([
+            dbc.CardHeader("Расходы регионального бюджета"),
+                 ]),
+        dbc.Row([
+            html.Div([
+                dcc.Graph(figure=fig),
+                ], style={'textAlign': 'center'})
+            ],)
+            ], style={'textAlign': 'center'}) # , "height": "1rem"
+            
+    return cards_2
 
+@callback(
+    Output('cards_3', 'children'),
+     [Input('crossfilter-reg', 'value'),
+     Input('crossfilter-year1', 'value')
+    ]
+)
+def update_card3(reg, year):
+    df_count=df[(df['Year'] == year) & (df['Region'] == reg)]
+    df_count2=df[(df['Year'] == year - 1) & (df['Region'] == reg)]
+
+    sal2=df_count.iloc[0]['Сальдо регионального бюджета']
+    sal1=df_count2.iloc[0]['Сальдо регионального бюджета']
+
+    fig = go.Figure(go.Indicator(
+        mode = "number+delta",
+        value = sal2,
+        number = {'prefix': ""},
+        delta = {'position': "top", 'relative': True,'reference': sal1},
+        domain = {'x': [0, 1], 'y': [0.25, 0.75]}))
+    fig.update_layout(
+        autosize=False,
+        width=280,
+        height=280,
+        )
+    cards_3 = dbc.Card([
+        dbc.Row([
+            dbc.CardHeader("Сальдо регионального бюджета"),
+                 ]),
+        dbc.Row([
+            html.Div([
+                dcc.Graph(figure=fig),
+                ], style={'textAlign': 'center'})
+            ],)
+            ], style={'textAlign': 'center'}) # , "height": "1rem"
+            
+    return cards_3
+
+@callback(
+    Output('cards_4', 'children'),
+     [Input('crossfilter-reg', 'value'),
+     Input('crossfilter-year1', 'value')
+    ]
+)
+def update_card4(reg, year):
+    df_count=df[(df['Year'] == year) & (df['Region'] == reg)]
+    df_count2=df[(df['Year'] == year - 1) & (df['Region'] == reg)]
+
+    inn2=df_count.iloc[0]['Доля инновационных продуктов']
+    inn1=df_count2.iloc[0]['Доля инновационных продуктов']
+
+    fig = go.Figure(go.Indicator(
+        mode = "number+delta",
+        value = inn2,
+        number = {'prefix': ""},
+        delta = {'position': "top", 'relative': True,'reference': inn1},
+        domain = {'x': [0, 1], 'y': [0.25, 0.75]}))
+    fig.update_layout(
+        autosize=False,
+        width=280,
+        height=280,
+        )
+    cards_4 = dbc.Card([
+        dbc.Row([
+            dbc.CardHeader("Доля инновационных продуктов"),
+                 ]),
+        dbc.Row([
+            html.Div([
+                dcc.Graph(figure=fig),
+                ], style={'textAlign': 'center'})
+            ],)
+            ], style={'textAlign': 'center'}) # , "height": "1rem"
+            
+    return cards_4
+
+@callback(
+    Output('cards_5', 'children'),
+     [Input('crossfilter-reg', 'value'),
+     Input('crossfilter-year1', 'value')
+    ]
+)
+def update_card5(reg, year):
+    df_count=df[(df['Year'] == year) & (df['Region'] == reg)]
+    df_count2=df[(df['Year'] == year - 1) & (df['Region'] == reg)]
+
+    inn_act2=df_count.iloc[0]['Доля инновационно активных организации']
+    inn_act1=df_count2.iloc[0]['Доля инновационно активных организации']
+
+    fig = go.Figure(go.Indicator(
+        mode = "number+delta",
+        value = inn_act2,
+        number = {'prefix': ""},
+        delta = {'position': "top", 'relative': True,'reference': inn_act1},
+        domain = {'x': [0, 1], 'y': [0.25, 0.75]}))
+    fig.update_layout(
+        autosize=False,
+        width=280,
+        height=280,
+        )
+    cards_5 = dbc.Card([
+        dbc.Row([
+            dbc.CardHeader("Доля инновационно активных организации"),
+                 ]),
+        dbc.Row([
+            html.Div([
+                dcc.Graph(figure=fig),
+                ], style={'textAlign': 'center'})
+            ],)
+            ], style={'textAlign': 'center'}) # , "height": "1rem"
+            
+    return cards_5
+
+@callback(
+    Output('cards_6', 'children'),
+     [Input('crossfilter-reg', 'value'),
+     Input('crossfilter-year1', 'value')
+    ]
+)
+def update_card6(reg, year):
+    df_count=df[(df['Year'] == year) & (df['Region'] == reg)]
+    df_count2=df[(df['Year'] == year - 1) & (df['Region'] == reg)]
+
+    inv2=df_count.iloc[0]['Инвестиции в основной капитал на душу населения']
+    inv1=df_count2.iloc[0]['Инвестиции в основной капитал на душу населения']
+
+    fig = go.Figure(go.Indicator(
+        mode = "number+delta",
+        value = inv2,
+        number = {'prefix': ""},
+        delta = {'position': "top", 'relative': True,'reference': inv1},
+        domain = {'x': [0, 1], 'y': [0.25, 0.75]}))
+    fig.update_layout(
+        autosize=False,
+        width=280,
+        height=280,
+        )
+    cards_6 = dbc.Card([
+        dbc.Row([
+            dbc.CardHeader("Инвестиции в основной капитал на душу населения"),
+                 ]),
+        dbc.Row([
+            html.Div([
+                dcc.Graph(figure=fig),
+                ], style={'textAlign': 'center'})
+            ],)
+            ], style={'textAlign': 'center','font-size': '0.8em'}) #, "height": "1rem"
+            
+    return cards_6
 
 @callback(
     Output('rusmap', 'figure'),
